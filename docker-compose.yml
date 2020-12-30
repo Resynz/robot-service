@@ -1,0 +1,17 @@
+version: '2'
+services:
+  robot-service:
+    image: robot-service:0.0.1
+    network_mode: "bridge"
+    ports:
+      - "3280:3280"
+    environment:
+      - "APP_PORT=3280"
+      - "MODE=release"
+    volumes:
+      - ./configs:/configs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "2"
